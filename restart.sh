@@ -13,7 +13,7 @@ do
         then
         echo "restart"
         killall -9 python3
-        cd /root/word_cloud_bot && python3 main.py >> output 2>&1 &
+        cd /app && python3 main.py >> output 2>&1 &
 fi
         sleep 10
 done
