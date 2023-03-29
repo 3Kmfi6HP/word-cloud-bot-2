@@ -3,7 +3,7 @@ FROM node:latest
 WORKDIR /app
 RUN apt-get update && \
     npm install -g pm2 &&\
-    apt-get install -y wget vim iproute2 coreutils systemd git psmisc bc sudo curl
+    apt-get install -y wget vim iproute2 coreutils git psmisc bc sudo curl
 
 # Install software-properties-common and add deadsnakes PPA
 # RUN apt update
