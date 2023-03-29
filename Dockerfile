@@ -1,4 +1,4 @@
-FROM rackspacedot/python37:latest
+FROM python:bullseye
 WORKDIR /app
 RUN apt-get update && \
     apt-get install -y wget vim iproute2 coreutils systemd git psmisc bc sudo curl
