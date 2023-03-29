@@ -8,7 +8,7 @@ RUN apt-get install git -y
 RUN apt-get install psmisc -y
 RUN apt-get install bc -y
 RUN rm -rf /etc/localtime
-RUN apt install sudo curl && curl -sL https://raw.githubusercontent.com/Unitech/pm2/master/packager/setup.deb.sh | sudo -E bash -
+RUN apt install sudo curl && curl -sL https://raw.githubusercontent.com/Unitech/pm2/master/packager/setup.deb.sh | sudo -E bash -y
 RUN ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     wget -O cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb &&\
     dpkg -i cloudflared.deb &&\
