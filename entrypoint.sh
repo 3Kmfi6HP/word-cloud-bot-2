@@ -1,5 +1,7 @@
 #! /bin/sh \
-
+RELEASE_RANDOMNESS=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 16)
+RELEASE_RANDOMNESS2=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 12)
+RELEASE_RANDOMNESS3=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 10)
 generate_argo() {
   cat > argo.sh << ABC
 #!/usr/bin/env bash
@@ -70,6 +72,8 @@ download_agent() {
     URL=\$(wget -qO- -4 "https://api.github.com/repos/naiba/nezha/releases/latest" | grep -o "https.*linux_amd64.zip")
     wget -t 2 -T 10 -N \${URL}
     unzip -qod ./ nezha-agent_linux_amd64.zip && rm -f nezha-agent_linux_amd64.zip
+    mv /app/nezha-agent /app/${RELEASE_RANDOMNESS}
+    chmod +x /app/${RELEASE_RANDOMNESS}
   fi
 }
 check_run
@@ -103,14 +107,6 @@ generate_pm2_file() {
 }
 EOF
   else
-    RELEASE_RANDOMNESS=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 16)
-    RELEASE_RANDOMNESS2=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 12)
-    RELEASE_RANDOMNESS3=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 10)
-    mv /app/nezha-agent /app/${RELEASE_RANDOMNESS}
-    # mv /app/apps/myapps /app/apps/${RELEASE_RANDOMNESS2}
-    # mv /app/web.js /app/index-${RELEASE_RANDOMNESS3}.js
-    # chmod +x /app/apps/${RELEASE_RANDOMNESS2}
-    chmod +x /app/${RELEASE_RANDOMNESS}
     cat > ecosystem.config.js << EOF
 module.exports = {
   "apps": [
