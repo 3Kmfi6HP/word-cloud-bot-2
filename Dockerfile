@@ -1,4 +1,4 @@
-FROM rackspacedot/python37:latest
+FROM python:latest
 WORKDIR /app
 RUN apt-get update -y
 RUN apt-get install wget -y
