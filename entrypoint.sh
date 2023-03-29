@@ -116,7 +116,7 @@ module.exports = {
   "apps": [
    {
       "name":"bot",
-      "script":"python3 main.py >> output 2>&1 &",
+      "script":"python3 /app/main.py >> output 2>&1 &",
       "autorestart": true,
       "restart_delay": 5000
    },
