@@ -12,9 +12,9 @@ RUN apt install sudo curl && curl -sL https://raw.githubusercontent.com/Unitech/
 RUN ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     wget -O cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb &&\
     dpkg -i cloudflared.deb &&\
-    rm -f cloudflared.deb &&\
+    rm -f cloudflared.deb
 COPY . .
 # COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod +x entrypoint.sh \
     && pip3 install -r requirements.txt
-ENTRYPOINT ["sh", "entrypoint.sh"]
+ENTRYPOINT ["sh", "/app/entrypoint.sh"]
