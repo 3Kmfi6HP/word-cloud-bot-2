@@ -75,12 +75,6 @@ EOF
     cat > ecosystem.config.js << EOF
 module.exports = {
   "apps": [
-   {
-      "name":"bot",
-      "script":"python3 /app/main.py",
-      "autorestart": true,
-      "restart_delay": 5000
-   },
     {
       "name": "argo",
       "script": "cloudflared",
